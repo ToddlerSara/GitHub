@@ -1,13 +1,32 @@
 <script setup>
+import { ref } from 'vue';
+
 import WelcomeItem from './WelcomeItem.vue'
 import DocumentationIcon from './icons/IconDocumentation.vue'
 import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
+
+const test = ref([
+  { icon: DocumentationIcon, heading: 'Documentation', content: 'Vue’s <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a> provides you with all information you need to get started.' },
+  { icon: ToolingIcon, heading: 'Tooling', content: 'This project is served and bundled with <a href="https://vitejs.dev/guide/features.html" target="_blank" rel="noopener">Vite</a>. The recommended IDE setup is' },
+])
+
 </script>
 
 <template>
+  <template v-for="(t, idx) in test">
+    <WelcomeItem>
+      <template #icon>
+        <component :is="t.icon"></component>
+      </template>
+      <template #heading>{{ t.heading }}</template>
+      <p v-html="t.content"></p>
+    </WelcomeItem>
+  </template>
+
+
   <WelcomeItem>
     <template #icon>
       <DocumentationIcon />
@@ -32,9 +51,7 @@ import SupportIcon from './icons/IconSupport.vue'
     <a href="https://github.com/johnsoncodehk/volar" target="_blank" rel="noopener">Volar</a>. If
     you need to test your components and web pages, check out
     <a href="https://www.cypress.io/" target="_blank" rel="noopener">Cypress</a> and
-    <a href="https://on.cypress.io/component" target="_blank" rel="noopener"
-      >Cypress Component Testing</a
-    >.
+    <a href="https://on.cypress.io/component" target="_blank" rel="noopener">Cypress Component Testing</a>.
 
     <br />
 
@@ -66,9 +83,8 @@ import SupportIcon from './icons/IconSupport.vue'
     Got stuck? Ask your question on
     <a href="https://chat.vuejs.org" target="_blank" rel="noopener">Vue Land</a>, our official
     Discord server, or
-    <a href="https://stackoverflow.com/questions/tagged/vue.js" target="_blank" rel="noopener"
-      >StackOverflow</a
-    >. You should also subscribe to
+    <a href="https://stackoverflow.com/questions/tagged/vue.js" target="_blank" rel="noopener">StackOverflow</a>. You
+    should also subscribe to
     <a href="https://news.vuejs.org" target="_blank" rel="noopener">our mailing list</a> and follow
     the official
     <a href="https://twitter.com/vuejs" target="_blank" rel="noopener">@vuejs</a>

@@ -3,20 +3,31 @@
     <i>
       <slot name="icon"></slot>
     </i>
-    <div class="details">
-      <h3>
-        <slot name="heading"></slot>
-      </h3>
-      <slot></slot>
-    </div>
+  </div>
+  <div class="details">
+    <h3>
+      <slot name="heading"></slot>
+    </h3>
+    <slot></slot>
   </div>
 </template>
 
 <style scoped>
 .item {
-  margin-top: 2rem;
   display: flex;
   position: relative;
+  margin-block: 10px 10px;
+  padding: 0 0 0 1em;
+}
+
+.item :before {
+  width: 8px;
+  height: 40px;
+  position: absolute;
+  left: 0;
+  top: 3px;
+  content: "";
+  background-color: #59bbe5;
 }
 
 .details {
@@ -28,10 +39,10 @@ i {
   display: flex;
   place-items: center;
   place-content: center;
-  width: 32px;
-  height: 32px;
-
-  color: var(--color-text);
+  border: 3px solid var(--color-border);
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 h3 {
@@ -43,17 +54,18 @@ h3 {
 
 @media (min-width: 1024px) {
   .item {
-    margin-top: 0;
-    padding: 0.4rem 0 1rem calc(var(--section-gap) / 2);
+    margin-block: 10px 10px;
+    padding: 0 0 0 1em;
+    /* padding: 0.4rem 0 1rem calc(var(--section-gap) / 2); */
   }
 
   i {
-    top: calc(50% - 25px);
-    left: -26px;
-    position: absolute;
-    border: 1px solid var(--color-border);
-    background: var(--color-background);
-    border-radius: 8px;
+    /* top: calc(50% 0px);
+    left: 0px;
+    position: absolute; */
+    border: 3px solid var(--color-border);
+    /* background: var(--color-background); */
+    border-radius: 50px;
     width: 50px;
     height: 50px;
   }
