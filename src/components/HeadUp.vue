@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import SaraNameLog from '@/assets/Sara_name.png'
 
 const headMeauFormList = ref([
@@ -16,14 +16,16 @@ const Sng = `url('${SaraNameLog}')`;
     <div class="name_H"></div>
     <div class="menu">
       <div class="formstytle" v-for="(formList, idx) in headMeauFormList">
-        <router-link :to="formList.path">{{ formList.name }}</router-link>
+        <router-link :to="formList.path" class="router-link-class">{{ formList.name }}</router-link>
       </div>
       <div class="formstytle"><a href="Luna_textform.html">Luna_textform</a> </div>
+      <div class="formstytle">contant me</div>
     </div>
-    <div class="name">contant me</div>
   </div>
 </template>
 
+<!-- 当在style标签上加上scoped属性，则style标签下的样式只能在本组件中使用，可以使得组件之间的样式不互相污染。
+如果每一个vue组件的style标签都加上了scoped，那就实现了样式的模块化。 -->
 <style lang="scss" scoped>
 // class='header'
 .header {
@@ -49,7 +51,31 @@ const Sng = `url('${SaraNameLog}')`;
 }
 
 .formstytle {
-  margin: 5px;
-  padding: 5px;
+  padding: 0 10px; //上下 左右
+
+  &:not(:first-child) {
+    border-left: 1px solid #020202; //框線顏色
+  }
+}
+
+//使用deep，可以取代class='router-link-class'，針對解譯後的'a'有影響。
+// .router-link-class {
+:deep(a) {
+  &:link {
+    text-decoration: none;
+    color: #020202
+  }
+
+  &:visited {
+    color: #020202
+  }
+
+  &:hover {
+    color: rgb(202, 102, 8);
+  }
+
+  &:active {
+    color: rgb(202, 102, 8);
+  }
 }
 </style>

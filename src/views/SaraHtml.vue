@@ -1,11 +1,14 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'
 import TheWelcome from '@/components/TheWelcome.vue'
-import Iframe from '@/components/Iframe.vue'
 import backgroundImg from '@/assets/pixel-background.jpg'
+//
+import HelloWorld from '@/components/HelloWorld.vue'
+//連結影片用
+import Iframe from '@/components/Iframe.vue'
 
-const msg1 = ref(null);
+
+// const msg1 = ref(null);
 
 const articleList = ref([
     { name: 'article A', content: '測試A', url: backgroundImg },
@@ -67,7 +70,7 @@ const bgImg = `url('${backgroundImg}')`;
         padding: 5px;
         color: #202020; // 字體顏色
         font-size: 16px; //主要用來改字體大小 px
-        font-weight: lighter; // 用來設定字體粗細
+        font-family: "Noto Sans TC", sans-serif, "微軟正黑體", arial;
     }
 
 
