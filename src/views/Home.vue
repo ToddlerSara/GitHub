@@ -2,6 +2,20 @@
 import { ref } from 'vue';
 import HelloMeImg from '@/assets/hello.jpg'
 
+const headMeauFormList = ref([
+    { name: 'About me', path: '/sara', color: ' rgb(255, 128, 0)' },
+    { name: 'Project', path: '/homework', color: 'rgb(255, 0, 0)' },
+    { name: 'Contant', path: '/', color: 'rgb(0, 255, 217)' },
+])
+const linkStyle = (a) => {
+    if (a.c) {
+        return { "background-color": a.c };
+    }
+    return { "background-color": a.color };
+}
+// const mouseover = (e) => {
+//     console.log(e)
+// }
 // const himeImg = `url('${HelloMeImg}')`;
 
 </script>
@@ -19,20 +33,22 @@ import HelloMeImg from '@/assets/hello.jpg'
             <div class="aboutArea">
                 <div class="SecondRoll">
                     <div>
-                        <h1>Big Hello(right_up)</h1>
+                        <h1>Hello</h1>
                     </div>
                     <div>
-                        <p>A Bit About Me(right_senter)</p>
+                        <h2>A Bit About Me</h2>
                     </div>
                     <div>
                         <p>I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a
-                            story and let your users know a little more about you.(right_down)</p>
+                            story and let your users know a little more about you.</p>
                     </div>
                 </div>
-                <div class="">
-                    <div>Resume</div>
-                    <div>project</div>
-                    <div>contant</div>
+                <div class="linkpage">
+                    <div v-for="(formList, idx) in headMeauFormList">
+                        <router-link class="router-link-class" v-bind:to="formList.path" v-bind:style="linkStyle(formList)"
+                            @mouseover="formList.c = 'white'" @mouseleave="formList.c = ''">
+                            {{ formList.name }}</router-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -44,7 +60,7 @@ import HelloMeImg from '@/assets/hello.jpg'
     >* {
         display: flex;
         justify-content: space-around;
-        padding: 10px; //上下 左右
+        padding: 80px; //上下 左右
         margin: 5px;
         min-width: 980px
     }
@@ -89,11 +105,47 @@ import HelloMeImg from '@/assets/hello.jpg'
     .SecondRoll {
         display: inline;
         justify-content: space-around;
-        padding: 0 10px; //上下 左右
         margin: 5px;
         width: min-content;
     }
 
+    h1 {
+        margin: 30px 0 5px 0;
+        font-family: "Indie Flower", cursive;
+        font-size: 130px;
+    }
 
+    h2 {
+        margin: 0 0 5px 0;
+        font-family: "Madimi One", sans-serif;
+        font-size: 30px;
+    }
+
+    p {
+        margin: 0 0 25px 0;
+        font-family: "PT Sans", sans-serif;
+        font-size: 16px;
+    }
+
+    .linkpage {
+        display: grid;
+        grid-template-columns: 140px 140px 140px;
+        grid-template-rows: 140px;
+        gap: 5px;
+        position: relative;
+        // justify-content: space-between;
+    }
+
+    .router-link-class {
+        border: 1px solid;
+        color: #020202;
+        border-radius: 50%;
+        // background-color: rgb(0, 255, 217);
+        text-decoration: none;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        padding: 35px;
+    }
 }
 </style>

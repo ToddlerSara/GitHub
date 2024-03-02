@@ -5,7 +5,7 @@ import SaraNameLog from '@/assets/Sara_name.png'
 const headMeauFormList = ref([
   { name: 'Hello', path: '/home' },
   { name: 'About me', path: '/sara' },
-  { name: 'Practice', path: '/homework' },
+  { name: 'Project', path: '/homework' },
 ])
 const Sng = `url('${SaraNameLog}')`;
 
@@ -61,21 +61,25 @@ const Sng = `url('${SaraNameLog}')`;
 //使用deep，可以取代class='router-link-class'，針對解譯後的'a'有影響。
 // .router-link-class {
 :deep(a) {
+
+  //連結未被訪問過
   &:link {
     text-decoration: none;
     color: #020202
   }
 
+  //連結已被訪問過
   &:visited {
     color: #020202
   }
 
+  //滑鼠游標移到元素上
   &:hover {
     color: rgb(202, 102, 8);
   }
 
+  //滑鼠點擊到放開前
   &:active {
     color: rgb(202, 102, 8);
   }
-}
-</style>
+}</style>
