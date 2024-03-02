@@ -2,16 +2,21 @@
 import { ref } from 'vue';
 import HelloMeImg from '@/assets/hello.jpg'
 
-const himeImg = `url('${HelloMeImg}')`;
+// const himeImg = `url('${HelloMeImg}')`;
 
 </script>
 <template>
     <div class="body">
         <div>
-            <div class="frames">
-                <div class="myphoto"> </div>
+            <!-- 畫框包覆 -->
+            <!-- <div class="frames"> -->
+            <!-- <div class="myphoto"></div> -->
+            <!-- </div> -->
+            <!-- 直接放圖 -->
+            <div class="photoArea">
+                <img :src="HelloMeImg" />
             </div>
-            <div>
+            <div class="aboutArea">
                 <div class="SecondRoll">
                     <div>
                         <h1>Big Hello(right_up)</h1>
@@ -44,25 +49,41 @@ const himeImg = `url('${HelloMeImg}')`;
         min-width: 980px
     }
 
-    .frames {
-        position: relative;
-        align-self: start;
-        border-radius: 50%;
-        overflow: hidden;
+    .photoArea {
+        margin: 35px;
         width: 480px;
         height: 480px;
-        margin: 35px 35px;
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+        }
     }
 
-    .myphoto {
-        background-image: v-bind(himeImg);
-        background-repeat: no-repeat;
-        background-position: right 55% bottom 85%;
-        background-size: cover;
-        box-sizing: content-box;
-        height: 100%;
-        width: 100%;
-        padding-bottom: 30%;
+    // .frames {
+    //     position: relative;
+    //     align-self: start;
+    //     overflow: hidden;
+    //     width: 480px;
+    //     height: 480px;
+    //     margin: 35px;
+    // }
+
+    // .myphoto {
+    //     background-image: v-bind(himeImg);
+    //     background-repeat: no-repeat;
+    //     background-position: right 55% bottom 85%;
+    //     background-size: cover;
+    //     box-sizing: content-box;
+    //     height: 100%;
+    //     width: 100%;
+    //     padding-bottom: 30%;
+    // }
+
+    .aboutArea {
+        flex: 1;
     }
 
     .SecondRoll {

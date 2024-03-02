@@ -3,9 +3,9 @@ import { ref } from 'vue';
 import SaraNameLog from '@/assets/Sara_name.png'
 
 const headMeauFormList = ref([
-  { name: 'Hello', path: '/' },
+  { name: 'Hello', path: '/home' },
   { name: 'About me', path: '/sara' },
-  { name: 'Practice', path: '/' },
+  { name: 'Practice', path: '/homework' },
 ])
 const Sng = `url('${SaraNameLog}')`;
 

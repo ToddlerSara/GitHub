@@ -2,8 +2,7 @@
 import { onMounted, ref } from 'vue';
 import TheWelcome from '@/components/TheWelcome.vue'
 import backgroundImg from '@/assets/pixel-background.jpg'
-//
-import HelloWorld from '@/components/HelloWorld.vue'
+
 //連結影片用
 import Iframe from '@/components/Iframe.vue'
 
@@ -52,9 +51,7 @@ const bgImg = `url('${backgroundImg}')`;
         <div>
             <TheWelcome />
         </div>
-        <div class="footerArea">
-            footer
-        </div>
+
     </div>
 </template>
 
