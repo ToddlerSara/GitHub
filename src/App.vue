@@ -5,6 +5,24 @@ import FooterDown from '@/components/Footer.vue'
 
 <template>
   <Headup />
-  <router-view />
+  <!-- 畫面轉場延遲秒數 -->
+  <router-view v-slot="{ Component, route }">
+    <transition name="fade">
+      <component :is="Component" :key="route.path" />
+    </transition>
+  </router-view>
+  <!-- <router-view /> -->
   <FooterDown />
 </template>
+
+<style lang="scss" scoped>
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.8s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+</style>

@@ -59,15 +59,16 @@ const linkStyle = (a) => {
 .body {
     >* {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         padding: 80px; //上下 左右
-        margin: 5px;
+        margin: 10px 100px;
         min-width: 980px
     }
 
     .photoArea {
         margin: 35px;
-        width: 480px;
+        min-width: 480px;
+        max-width: 480px;
         height: 480px;
         position: relative;
         border-radius: 50%;
@@ -105,8 +106,6 @@ const linkStyle = (a) => {
     .SecondRoll {
         display: inline;
         justify-content: space-around;
-        margin: 5px;
-        width: min-content;
     }
 
     h1 {
@@ -122,7 +121,7 @@ const linkStyle = (a) => {
     }
 
     p {
-        margin: 0 0 25px 0;
+        margin: 0 80px 25px 0;
         font-family: "PT Sans", sans-serif;
         font-size: 16px;
     }

@@ -1,19 +1,33 @@
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from "vue-router"
 import SaraNameLog from '@/assets/Sara_name.png'
 
 const headMeauFormList = ref([
-  { name: 'Hello', path: '/home' },
+  { name: 'Home', path: '/' },
   { name: 'About me', path: '/sara' },
   { name: 'Project', path: '/homework' },
 ])
-const Sng = `url('${SaraNameLog}')`;
+// const Sng = `url('${SaraNameLog}')`;
 
-
+//use router
+const router = useRouter();
+const goto = () => {
+  // router.push('/home');
+  router.push({
+    path: '/'
+  })
+}
 </script>
+
 <template>
   <div class="header">
-    <div class="name_H"></div>
+
+    <!-- 可以不使用@click,router index.js 就有import 可以直接使用裡面的name/path -->
+    <!-- <a href="/home"> -->
+    <a @click="goto">
+      <div><img :src="SaraNameLog" class="name_H"></div>
+    </a>
     <div class="menu">
       <div class="formstytle" v-for="(formList, idx) in headMeauFormList">
         <router-link :to="formList.path" class="router-link-class">{{ formList.name }}</router-link>
@@ -26,8 +40,10 @@ const Sng = `url('${SaraNameLog}')`;
 
 <!-- 当在style标签上加上scoped属性，则style标签下的样式只能在本组件中使用，可以使得组件之间的样式不互相污染。
 如果每一个vue组件的style标签都加上了scoped，那就实现了样式的模块化。 -->
+
 <style lang="scss" scoped>
 // class='header'
+
 .header {
   display: flex; //水平排列
   align-items: center; //文字上下置中
@@ -38,11 +54,13 @@ const Sng = `url('${SaraNameLog}')`;
 .name_H {
   position: static;
   min-width: 75px;
-  height: 75px;
-  background-image: v-bind(Sng);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  max-width: 75px;
+  height: 40px;
+  position: relative;
+  // background-image: v-bind(Sng);
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: contain;
 }
 
 .menu {
@@ -61,7 +79,6 @@ const Sng = `url('${SaraNameLog}')`;
 //使用deep，可以取代class='router-link-class'，針對解譯後的'a'有影響。
 // .router-link-class {
 :deep(a) {
-
   //連結未被訪問過
   &:link {
     text-decoration: none;
@@ -82,4 +99,5 @@ const Sng = `url('${SaraNameLog}')`;
   &:active {
     color: rgb(202, 102, 8);
   }
-}</style>
+}
+</style>
