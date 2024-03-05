@@ -26,13 +26,18 @@ const goto = () => {
     <!-- 可以不使用@click,router index.js 就有import 可以直接使用裡面的name/path -->
     <!-- <a href="/home"> -->
     <a @click="goto">
-      <div><img :src="SaraNameLog" class="name_H"></div>
+      <div>
+        <!-- 使用圖片 -->
+        <!-- <img :src="SaraNameLog" class="name_H"> -->
+        <h1>Sara's Work Section</h1>
+      </div>
     </a>
     <div class="menu">
       <div class="formstytle" v-for="(formList, idx) in headMeauFormList">
         <router-link :to="formList.path" class="router-link-class">{{ formList.name }}</router-link>
       </div>
-      <div class="formstytle"><a href="Luna_textform.html">Luna_textform</a> </div>
+      <!-- 練習參考網 -->
+      <!-- <div class="formstytle"><a href="Luna_textform.html" class="router-link-class">Luna_textform</a> </div> -->
       <div class="formstytle">contant me</div>
     </div>
   </div>
@@ -51,17 +56,19 @@ const goto = () => {
   padding: 0 20px 0 20PX; //上右下左蘭寬
 }
 
-.name_H {
-  position: static;
-  min-width: 75px;
-  max-width: 75px;
-  height: 40px;
-  position: relative;
-  // background-image: v-bind(Sng);
-  // background-repeat: no-repeat;
-  // background-position: center;
-  // background-size: contain;
+h1 {
+  font-family: "Indie Flower", cursive;
+  font-size: 30px;
+  font-weight: 700;
 }
+
+// .name_H {
+//   position: static;
+//   min-width: 75px;
+//   max-width: 75px;
+//   height: 40px;
+//   position: relative;
+// }
 
 .menu {
   display: inline-flex;
@@ -69,7 +76,8 @@ const goto = () => {
 }
 
 .formstytle {
-  padding: 0 10px; //上下 左右
+  padding: 0 20px; //上下 左右
+  font-size: 1rem;
 
   &:not(:first-child) {
     border-left: 1px solid #020202; //框線顏色
@@ -77,8 +85,9 @@ const goto = () => {
 }
 
 //使用deep，可以取代class='router-link-class'，針對解譯後的'a'有影響。
-// .router-link-class {
-:deep(a) {
+// :deep(a) {}
+.router-link-class {
+
   //連結未被訪問過
   &:link {
     text-decoration: none;
@@ -93,10 +102,19 @@ const goto = () => {
   //滑鼠游標移到元素上
   &:hover {
     color: rgb(202, 102, 8);
+    transition: all cubic-bezier(0.46, 0.03, 0.52, 0.96) 1s;
+    background: linear-gradient(transparent 70%, #FFD43C 50%);
   }
 
   //滑鼠點擊到放開前
   &:active {
+    color: rgb(202, 102, 8);
+  }
+
+  &.router-link-exact-active {
+    content: "";
+    background: linear-gradient(transparent 70%, #FFD43C 50%);
+    border-radius: 50px;
     color: rgb(202, 102, 8);
   }
 }

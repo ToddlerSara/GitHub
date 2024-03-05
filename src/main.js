@@ -3,5 +3,6 @@ import './assets/main.css'
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-
-createApp(App).use(router).mount('#app');
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+import 'swiper/css';
+createApp(App).use(VueAwesomeSwiper).use(router).mount('#app');

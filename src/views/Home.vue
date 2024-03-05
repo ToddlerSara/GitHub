@@ -19,6 +19,7 @@ const linkStyle = (a) => {
 // const himeImg = `url('${HelloMeImg}')`;
 
 </script>
+
 <template>
     <div class="body">
         <div>
@@ -39,14 +40,17 @@ const linkStyle = (a) => {
                         <h2>A Bit About Me</h2>
                     </div>
                     <div>
-                        <p>I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a
+                        <p>I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to
+                            tell a
                             story and let your users know a little more about you.</p>
                     </div>
                 </div>
                 <div class="linkpage">
                     <div v-for="(formList, idx) in headMeauFormList">
-                        <router-link class="router-link-class" v-bind:to="formList.path" v-bind:style="linkStyle(formList)"
-                            @mouseover="formList.c = 'white'" @mouseleave="formList.c = ''">
+                        <!-- @mouseover & @mouseleave 使用-->
+                        <router-link class="router-link-class" v-bind:to="formList.path"
+                            v-bind:style="linkStyle(formList)" @mouseover="formList.c = 'white'"
+                            @mouseleave="formList.c = ''">
                             {{ formList.name }}</router-link>
                     </div>
                 </div>
@@ -60,7 +64,7 @@ const linkStyle = (a) => {
     >* {
         display: flex;
         justify-content: center;
-        padding: 80px; //上下 左右
+        // padding: 80px; //上下 左右
         margin: 10px 100px;
         min-width: 980px
     }

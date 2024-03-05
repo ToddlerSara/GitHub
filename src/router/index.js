@@ -14,13 +14,13 @@ const routes = [
     {
         path: '/homework',
         name: 'homework',
-        component: () => import('../views/practice.vue')
+        component: () => import('../views/Practice.vue')
     }
 ]
 
 const router = createRouter({
     history: createWebHistory('/'),
-    routes
+    routes,
 })
 
 export default router
