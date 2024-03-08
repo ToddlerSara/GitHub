@@ -1,12 +1,44 @@
 <script setup>
 import { ref } from 'vue';
-import { Swiper, SwiperSlide } from 'swiper/vue';
+import Swiper from "swiper";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Autoplay, Pagination, Navigation } from 'swiper';
+import { Autoplay, Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
+import { onMounted } from "vue";
 
-const modules = [Autoplay, Pagination, Navigation]
+onMounted(() => {
+    var swiper = new Swiper(".mySwiper", {
+        modules: [Autoplay, Pagination, Navigation, EffectCoverflow],
+        // loop: true,
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 2,
+        observer: true,
+        observeParents: true,
+        observeSlideChildren: true,
+        effect: 'coverflow',
+        coverflowEffect: {
+            rotate: 0,
+            stretch: -70,
+            depth: 500,
+            modifier: 1,
+            slideShadows: true,
+        },
+        // autoplay: { delay: 3000, pauseOnMouseEnter: true, disableOnInteraction: false },
+        // If we need pagination
+        pagination:
+        {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+})
 
 const list = ref([
     { imgUrl: '/src/assets/Main/1.jpg' },
@@ -17,61 +49,48 @@ const list = ref([
     { imgUrl: '/src/assets/Main/6.jpg' },
     { imgUrl: '/src/assets/Main/7.jpg' },
     { imgUrl: '/src/assets/Main/8.jpg' },
-])
+]);
+
 </script>
 
 <template>
-    <div class="bgc">
-        <swiper :modules="modules" :loop="true" :slides-per-view="1" :loopedSlides="2" :space-between="0"
-            :autoplay="{ delay: 2000, pauseOnMouseEnter: true, disableOnInteraction: false }" :navigation="{
-            nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev'
-        }" :pagination="{ clickable: true }">
-            <swiper-slide v-for="( i, idx ) in  list ">
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="( i, idx ) in  list ">
                 <img class="frameBox" v-bind:src="i.imgUrl" />
-            </swiper-slide>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-        </swiper>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.bgc {
+.swiper {
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
     background-color: rgba(219, 223, 221, 0.411);
-    width: auto;
-    overflow: hidden;
 }
 
-.swiper {
-    width: auto;
-    height: 500px;
-    max-width: 600px;
-    max-height: 600px;
-    margin: auto;
-    overflow: visible; // hidden
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    height: 400px;
 }
 
 .swiper-button-prev,
 .swiper-button-next {
     position: absolute;
     top: 50%;
-    color: rgb(3, 45, 47);
-}
-
-.swiper-button-next {
-    right: -50px;
-    left: auto;
-}
-
-.swiper-button-prev {
-    right: auto;
-    left: -50px;
+    color: rgb(234, 247, 248);
 }
 
 //相框
 .frameBox {
     width: 100%;
-    height: 90%;
+    height: 100%;
     object-fit: cover;
 }
 </style>
