@@ -15,7 +15,7 @@ const routes = [
         path: '/homework',
         name: 'homework',
         component: () => import('../views/Practice.vue')
-    }
+    },
 ]
 
 const router = createRouter({
