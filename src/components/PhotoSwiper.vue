@@ -4,12 +4,12 @@ import Swiper from "swiper";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Autoplay, Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation, EffectCoverflow, Keyboard, Mousewheel } from 'swiper/modules';
 import { onMounted } from "vue";
 
 onMounted(() => {
     var swiper = new Swiper(".mySwiper", {
-        modules: [Autoplay, Pagination, Navigation, EffectCoverflow],
+        modules: [Autoplay, Pagination, Navigation, EffectCoverflow, Keyboard, Mousewheel],
         // loop: true,
         grabCursor: true,
         centeredSlides: true,
@@ -25,8 +25,12 @@ onMounted(() => {
             modifier: 1,
             slideShadows: true,
         },
-        // autoplay: { delay: 3000, pauseOnMouseEnter: true, disableOnInteraction: false },
+        autoplay: { delay: 3000, pauseOnMouseEnter: true, disableOnInteraction: false },
         // If we need pagination
+        mousewheel: true,
+        keyboard: {
+            enabled: true,
+        },
         pagination:
         {
             el: ".swiper-pagination",

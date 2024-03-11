@@ -29,13 +29,13 @@ const changeTab = (index) => {
                     <Hello />
                 </div>
                 <div id="C" v-if="currentTab === 2">
-                    C
                     <MySwiperSet />
                 </div>
             </div>
         </div>
         <div>
-            <div>快速認識我
+            <div class="foottitle">You Can Find Me</div>
+            <div class="bottomfoot">
                 <div>104求職網</div>
                 <div>blog</div>
                 <div>IG</div>
@@ -77,5 +77,18 @@ const changeTab = (index) => {
     height: 30px;
     background: linear-gradient(transparent 0%, rgb(121, 235, 209) 80%);
     transform: translateY(-70%);
+}
+
+.foottitle {
+    color: #202020;
+    font-size: 36px;
+    font-family: "Indie Flower", cursive;
+    text-align: center;
+}
+
+.bottomfoot {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px;
 }
 </style>

@@ -1,27 +1,21 @@
 <script setup>
 import Swiper from "swiper";
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 import { onMounted } from "vue";
 
 onMounted(() => {
     var swiper = new Swiper(".mySwiper", {
         modules: [Navigation, Pagination],
-        loop: true,
+        // loop: true,
         slidesPerView: 3,
         spaceBetween: 10,
-        breakpoints: {
-            576: {
-                slidesPerView: 2,
-            },
-            '@1.5': {
-                slidesPerView: 3,
-            }
-        },
         // If we need pagination
         pagination: {
-            el: '.swiper-pagination',
-            type: 'bullets',
+            el: ".swiper-pagination",
+            clickable: true,
         },
 
         // Navigation arrows
@@ -60,25 +54,24 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.swiper-top {
-    position: relative;
-    width: 100%;
-    margin: auto;
-}
-
 .mySwiper {
-    width: calc(100% - 100px);
-    margin: auto;
-    height: 200px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
 }
 
-.swiper-slide img {
+.swiper-wrapper {
+    box-sizing: content-box;
+}
+
+img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.swiper-pagination.swiper-pagination-1 {
-    bottom: -2rem;
+.swiper-button-next {
+    position: absolute;
+    top: 50%;
 }
 </style>
