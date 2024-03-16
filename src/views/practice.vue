@@ -17,6 +17,7 @@ const bgImg = `url('${backgroundImg}')`;
 // 元件的生命週期與更新機制lifecycle
 // const msg1 = ref(null);
 // onMounted(()=>{
+    
 //   msg1.value = 'Hey you';
 // })
 
